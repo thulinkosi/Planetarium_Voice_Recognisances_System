@@ -1,0 +1,18 @@
+C:\Users\Hollard\Desktop\PlanetariumVS2010\Planetarium Plugin\Planetarium Plugin\obj\Debug\Planetarium_Plugin.AddDictionary.resources
+C:\Users\Hollard\Desktop\PlanetariumVS2010\Planetarium Plugin\Planetarium Plugin\obj\Debug\Planetarium_Plugin.RemoveDictionary.resources
+C:\Users\Hollard\Desktop\PlanetariumVS2010\Planetarium Plugin\Planetarium Plugin\obj\Debug\Planetarium_Plugin.UpdateDictionary.resources
+C:\Users\Hollard\Desktop\PlanetariumVS2010\Planetarium Plugin\Planetarium Plugin\obj\Debug\Planetarium_Plugin.Presentation.resources
+C:\Users\Hollard\Desktop\PlanetariumVS2010\Planetarium Plugin\Planetarium Plugin\obj\Debug\Planetarium_Plugin.Properties.Resources.resources
+C:\Users\Hollard\Desktop\PlanetariumVS2010\Planetarium Plugin\Planetarium Plugin\obj\Debug\Planetarium Plugin.csproj.GenerateResource.Cache
+C:\Users\Hollard\Desktop\PlanetariumVS2010\Planetarium Plugin\Planetarium Plugin\obj\Debug\Planetarium_Plugin.MainMenu.resources
+C:\Users\Hollard\Desktop\PlanetariumVS2010\Planetarium Plugin\Planetarium Plugin\bin\Debug\Planetarium Plugin.dll.config
+C:\Users\Hollard\Desktop\PlanetariumVS2010\Planetarium Plugin\Planetarium Plugin\bin\Debug\Planetarium Plugin.dll
+C:\Users\Hollard\Desktop\PlanetariumVS2010\Planetarium Plugin\Planetarium Plugin\bin\Debug\Planetarium Plugin.pdb
+C:\Users\Hollard\Desktop\PlanetariumVS2010\Planetarium Plugin\Planetarium Plugin\bin\Debug\Planetarium Plugin.dll.manifest
+C:\Users\Hollard\Desktop\PlanetariumVS2010\Planetarium Plugin\Planetarium Plugin\bin\Debug\Planetarium Plugin.vsto
+C:\Users\Hollard\Desktop\PlanetariumVS2010\Planetarium Plugin\Planetarium Plugin\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+C:\Users\Hollard\Desktop\PlanetariumVS2010\Planetarium Plugin\Planetarium Plugin\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.xml
+C:\Users\Hollard\Desktop\PlanetariumVS2010\Planetarium Plugin\Planetarium Plugin\obj\Debug\Planetarium Plugin.dll
+C:\Users\Hollard\Desktop\PlanetariumVS2010\Planetarium Plugin\Planetarium Plugin\obj\Debug\Planetarium Plugin.pdb
+C:\Users\Hollard\Desktop\PlanetariumVS2010\Planetarium Plugin\Planetarium Plugin\obj\Debug\Planetarium Plugin.csprojResolveAssemblyReference.cache
+C:\Users\Hollard\Desktop\PlanetariumVS2010\Planetarium Plugin\Planetarium Plugin\obj\Debug\Planetarium_Plugin.AboutBox1.resources
