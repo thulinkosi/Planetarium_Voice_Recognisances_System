@@ -16,12 +16,15 @@ namespace Planetarium_Plugin
         PlanetariumDB_API api = new PlanetariumDB_API();
         string dictionaryName = "";
         string location = "";
-
+  
         public AddDictionary()
         {
             InitializeComponent();
+            pnlDictionary.Enabled = true;
+            pnlAssociations.Enabled = false;
+            cmdAddSlide.Text = "Add Slide";
         }
-
+      
         private void cmdCreateDictionary_Click(object sender, EventArgs e)
         {
 
@@ -42,6 +45,8 @@ namespace Planetarium_Plugin
                     api.addDictionary(dictionaryName, location + ".pptx");
 
                     MessageBox.Show("Dictionary added");
+                    pnlAssociations.Enabled = true;
+                    pnlDictionary.Enabled = false;
                     
                 }
             }
@@ -61,10 +66,13 @@ namespace Planetarium_Plugin
                     {
                         api.addKeyword(dictionaryName, txtPhrase.Text, Int32.Parse(txtSlideNumber.Tag.ToString()));
                         MessageBox.Show("Slide added");
+                        cmdAddSlide.Text = "Rename Slide";
                     }
                     else
                     {
-                        MessageBox.Show("Keyword already exists");
+                        api.updateKeywordPhrase(api.getKeyword(dictionaryName, Int32.Parse(txtSlideNumber.Tag.ToString())), txtPhrase.Text, dictionaryName);
+                        cmdAddSlide.Text = "Rename Slide";
+                        MessageBox.Show("Keyword Updated");
                     }
                 }
 
@@ -72,6 +80,7 @@ namespace Planetarium_Plugin
             else {
                 MessageBox.Show("Please enter a keyword");
             }
+           
 
         }
 
@@ -93,10 +102,21 @@ namespace Planetarium_Plugin
 
         private void txtSlideNumber_TextChanged(object sender, EventArgs e)
         {
+
+            if (!api.keyword_exists(dictionaryName, Int32.Parse(txtSlideNumber.Tag.ToString())) == null && api.keyword_exists(dictionaryName, Int32.Parse(txtSlideNumber.Tag.ToString())))
+            {
+
+                cmdAddSlide.Text = "Rename Slide";
+            }
+            else
+            {
+                cmdAddSlide.Text = "Add Slide";
+            }
             if (txtDictionary.Text != null)
             {
                 txtPhrase.Text = api.getKeyword(txtDictionary.Text, Int32.Parse(txtSlideNumber.Tag.ToString()));
             }
+
         }
 
         private void txtPhrase_TextChanged(object sender, EventArgs e)

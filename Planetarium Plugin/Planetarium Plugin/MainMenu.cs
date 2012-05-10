@@ -43,10 +43,9 @@ namespace Planetarium_Plugin
         }
 
         //slide change function
-
         void Application_SlideSelectionChanged(PowerPoint.SlideRange SldRange) 
         {
-          /**  try
+            try
            {
                 if (SldRange != null )
                 {
@@ -61,7 +60,7 @@ namespace Planetarium_Plugin
            catch (Exception ex) 
            {
 
-            } */
+            }
         }
 
         private void cmdStart_Click(object sender, RibbonControlEventArgs e)

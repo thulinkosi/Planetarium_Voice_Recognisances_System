@@ -23,7 +23,7 @@ namespace Planetarium_Plugin
         {
             PlanetariumDB_API api = new PlanetariumDB_API();
 
-            if (cmbDictionary.SelectedIndex != 0)
+            if (cmbDictionary.SelectedIndex != -1)
             {
                 api.removeDictionary(cmbDictionary.SelectedItem.ToString());
             }

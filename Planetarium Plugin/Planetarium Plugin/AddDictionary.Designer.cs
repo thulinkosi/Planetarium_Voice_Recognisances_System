@@ -29,6 +29,8 @@
         {
             txtSlideNumber.Tag = id;
             txtSlideNumber.Text = num;
+
+
         }
 
         #region Component Designer generated code
@@ -45,13 +47,13 @@
             this.txtSlideNumber = new System.Windows.Forms.TextBox();
             this.pnlAssociations = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlDictionary = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.cmdCreateDictionary = new System.Windows.Forms.Button();
             this.txtDictionary = new System.Windows.Forms.TextBox();
             this.cmdFinish = new System.Windows.Forms.Button();
             this.pnlAssociations.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pnlDictionary.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmdAddSlide
@@ -60,7 +62,6 @@
             this.cmdAddSlide.Name = "cmdAddSlide";
             this.cmdAddSlide.Size = new System.Drawing.Size(114, 23);
             this.cmdAddSlide.TabIndex = 4;
-            this.cmdAddSlide.Text = "Add Slide";
             this.cmdAddSlide.UseVisualStyleBackColor = true;
             this.cmdAddSlide.Click += new System.EventHandler(this.cmdAddSlide_Click_1);
             // 
@@ -112,16 +113,16 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Slide number:";
             // 
-            // panel1
+            // pnlDictionary
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.cmdCreateDictionary);
-            this.panel1.Controls.Add(this.txtDictionary);
-            this.panel1.Location = new System.Drawing.Point(9, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(174, 84);
-            this.panel1.TabIndex = 8;
+            this.pnlDictionary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlDictionary.Controls.Add(this.label1);
+            this.pnlDictionary.Controls.Add(this.cmdCreateDictionary);
+            this.pnlDictionary.Controls.Add(this.txtDictionary);
+            this.pnlDictionary.Location = new System.Drawing.Point(9, 12);
+            this.pnlDictionary.Name = "pnlDictionary";
+            this.pnlDictionary.Size = new System.Drawing.Size(174, 84);
+            this.pnlDictionary.TabIndex = 8;
             // 
             // label1
             // 
@@ -165,15 +166,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.cmdFinish);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlDictionary);
             this.Controls.Add(this.pnlAssociations);
             this.Name = "AddDictionary";
             this.Size = new System.Drawing.Size(191, 282);
             this.Load += new System.EventHandler(this.AddDictionary_Load);
             this.pnlAssociations.ResumeLayout(false);
             this.pnlAssociations.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlDictionary.ResumeLayout(false);
+            this.pnlDictionary.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -186,7 +187,7 @@
         private System.Windows.Forms.TextBox txtSlideNumber;
         private System.Windows.Forms.Panel pnlAssociations;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlDictionary;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button cmdCreateDictionary;
         private System.Windows.Forms.TextBox txtDictionary;

@@ -44,17 +44,8 @@ namespace Planetarium_Plugin
             if (e.Result.Confidence >= 0.90)
             {
                 string temp = e.Result.Text.ToLower();
-
-                if (keywords.Contains(temp))
-                {
-                   
-                   // MessageBox.Show(
-                   DialogResult yes = MessageBox.Show("Do you want to display slide matching "+temp,"Display",MessageBoxButtons.YesNo);
-                  if(yes.ToString().Equals("yes"))
-                  {
                     ShowSlides(temp);
-                  }
-                }
+   
             }
         }
 
