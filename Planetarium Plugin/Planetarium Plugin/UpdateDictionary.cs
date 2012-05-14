@@ -14,40 +14,44 @@ namespace Planetarium_Plugin
     public partial class UpdateDictionary : UserControl
     {
         PlanetariumDB_API api = new PlanetariumDB_API();
-        private string keyword = string.Empty;
+        public string keyword = string.Empty;
         PowerPoint.Presentation presentation;
         string dictionaryName="";
-         string location="";
+        string location="";
 
 
         public UpdateDictionary()
         {
             InitializeComponent();
+            pnlDictionary.Enabled = true;
+            pnlRenameDictionary.Enabled = false;
+            pnlRenameSlide.Enabled = false;
         }
 
         private void cmbDictionary_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            PowerPoint.Presentation presentation;            
+                        
             dictionaryName = cmbDictionary.SelectedItem.ToString();
             location = api.getDictionary(dictionaryName).Slide_URL;
+            presentation = Globals.ThisAddIn.Application.ActivePresentation;
+            presentation.Close();
             presentation = Globals.ThisAddIn.Application.Presentations.Open(location);
             presentation = Globals.ThisAddIn.Application.ActivePresentation;
-           /** location = api.getDictionary(cmbDictionary.SelectedItem.ToString()).Slide_URL;
-            dictionaryName = cmbDictionary.SelectedItem.ToString();
+
             txtOldName.Text = dictionaryName;
+            pnlDictionary.Enabled = false;
+            pnlRenameSlide.Enabled = true;
+            pnlRenameDictionary.Enabled = true;
 
-
-          // dictionaryName = cmbDictionary.SelectedItem.ToString();
-          // location = api.getDictionary(dictionaryName).Slide_URL;
-
-           presentation = Globals.ThisAddIn.Application.Presentations.Open(location); */
-            txtOldName.Text = dictionaryName;
+           
         }
 
+        void openDictionary() {
 
+        }
         private void UpdateDictionary_Load_1(object sender, EventArgs e)
         {
+            reload();
             List<Dictionary> dic = api.getAllDictionaries();
 
             if (cmbDictionary.Items.Count != 0)
@@ -80,15 +84,14 @@ namespace Planetarium_Plugin
             cmbDictionary.SelectedIndex = 0;
         }
 
-        private void txtSlideNumber_TextChanged_1(object sender, EventArgs e)
+  /**    private void txtSlideNumber_TextChanged_1(object sender, EventArgs e)
         {
             if (cmbDictionary.SelectedItem != null)
             {
-
                 txtKeyword.Text = api.getKeyword(cmbDictionary.SelectedItem.ToString(), Int32.Parse(txtSlideNumber.Tag.ToString()));
                 keyword = txtKeyword.Text;
             }
-        }
+        } */
 
         private void cmdUpdateDictionary_Click(object sender, EventArgs e)
         {
@@ -100,9 +103,18 @@ namespace Planetarium_Plugin
             }
             else 
             {
-                api.addKeyword(cmbDictionary.SelectedItem.ToString(), txtKeyword.Text, Int32.Parse(txtSlideNumber.Tag.ToString()));
-                txtKeyword.Text = api.getKeyword(cmbDictionary.SelectedItem.ToString(), Int32.Parse(txtSlideNumber.Tag.ToString()));
-                MessageBox.Show("Keyword Added");
+                if (!api.keyword_exists(dictionaryName, txtKeyword.Text) && !api.keyword_exists(dictionaryName, Int32.Parse(txtSlideNumber.Tag.ToString())))
+                {
+                    api.addKeyword(cmbDictionary.SelectedItem.ToString(), txtKeyword.Text, Int32.Parse(txtSlideNumber.Tag.ToString()));
+                    txtKeyword.Text = api.getKeyword(cmbDictionary.SelectedItem.ToString(), Int32.Parse(txtSlideNumber.Tag.ToString()));
+                    MessageBox.Show("Keyword Added");
+                }
+                else
+                {
+                    MessageBox.Show("Cannot Update Keyword - Add keyword in Add Panel");
+                }
+
+
 
             }
 
@@ -128,7 +140,11 @@ namespace Planetarium_Plugin
 
         private void cmdFinish_Click(object sender, EventArgs e)
         {
+            presentation.Save();
             cmbDictionary.SelectedIndex = -1;
+            pnlDictionary.Enabled = true;
+            pnlRenameDictionary.Enabled = false;
+            pnlRenameSlide.Enabled = false;
         }
 
         private void cmbDictionary_Click_1(object sender, EventArgs e)
@@ -147,7 +163,14 @@ namespace Planetarium_Plugin
         {
             if (api.dictionary_exists(dictionaryName))
             {
-                api.updateDictionary(dictionaryName, txtRename.Text);
+                string rename = txtRename.Text;
+                dictionaryName = txtOldName.Text;
+                api.updateDictionary(dictionaryName, rename);
+                MessageBox.Show("Dictionary Name Updated");
+                reload();
+                cmbDictionary.SelectedText = rename;
+                txtOldName.Text = rename;
+                txtRename.Clear();
             }
             else
             {

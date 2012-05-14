@@ -41,7 +41,7 @@ namespace Planetarium_Plugin
 
         void sr_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
-            if (e.Result.Confidence >= 0.90)
+            if (e.Result.Confidence >= 0.65)
             {
                 string temp = e.Result.Text.ToLower();
                     ShowSlides(temp);
@@ -77,14 +77,19 @@ namespace Planetarium_Plugin
         {
             int id = api.getKeyword(dictionaryName, phrase).Slide_Num;
             int index = 0;
-            foreach (PowerPoint.Slide slide in pres.Slides)
+
+            if(pres!=null)
             {
-
-                if (id == slide.SlideID)
+                foreach (PowerPoint.Slide slide in pres.Slides)
                 {
-                    index = slide.SlideIndex;
+                    //handle error with no slide id
 
-                    pres.SlideShowWindow.View.GotoSlide(index);
+                    if (id == slide.SlideID)
+                    {
+                        index = slide.SlideIndex;
+
+                        pres.SlideShowWindow.View.GotoSlide(index);
+                    }
                 }
             }
         }

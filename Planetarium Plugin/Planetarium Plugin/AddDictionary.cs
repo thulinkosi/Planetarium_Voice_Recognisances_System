@@ -16,6 +16,7 @@ namespace Planetarium_Plugin
         PlanetariumDB_API api = new PlanetariumDB_API();
         string dictionaryName = "";
         string location = "";
+        PowerPoint.Presentation pres; 
   
         public AddDictionary()
         {
@@ -34,8 +35,8 @@ namespace Planetarium_Plugin
             {
                 if (dictionaryName != "")
                 {
-                    PowerPoint.Presentation pres = Globals.ThisAddIn.Application.ActivePresentation;
-                    
+                   // PowerPoint.Presentation pres = Globals.ThisAddIn.Application.ActivePresentation;
+                    pres = Globals.ThisAddIn.Application.ActivePresentation;
                     string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                     location = filePath + "\\Dictionaries\\" + dictionaryName;
 
@@ -62,17 +63,16 @@ namespace Planetarium_Plugin
             {
                 if (dictionaryName != "")
                 {
-                    if (!api.keyword_exists(dictionaryName, txtPhrase.Text))
+                    if (!api.keyword_exists(dictionaryName, txtPhrase.Text)&&!api.keyword_exists(dictionaryName,Int32.Parse(txtSlideNumber.Tag.ToString())))
                     {
                         api.addKeyword(dictionaryName, txtPhrase.Text, Int32.Parse(txtSlideNumber.Tag.ToString()));
+                        txtPhrase.Clear();
                         MessageBox.Show("Slide added");
-                        cmdAddSlide.Text = "Rename Slide";
+                        
                     }
                     else
                     {
-                        api.updateKeywordPhrase(api.getKeyword(dictionaryName, Int32.Parse(txtSlideNumber.Tag.ToString())), txtPhrase.Text, dictionaryName);
-                        cmdAddSlide.Text = "Rename Slide";
-                        MessageBox.Show("Keyword Updated");
+                        MessageBox.Show("Keyword Cannot Be Updated! - Use the Update Panel");
                     }
                 }
 
@@ -96,22 +96,18 @@ namespace Planetarium_Plugin
 
         private void cmdFinish_Click(object sender, EventArgs e)
         {
+            pres.Save();
+            pnlDictionary.Enabled = true;
+            pnlAssociations.Enabled = false;
             txtDictionary.Clear();
             txtPhrase.Clear();
+           
+
         }
 
         private void txtSlideNumber_TextChanged(object sender, EventArgs e)
         {
 
-            if (!api.keyword_exists(dictionaryName, Int32.Parse(txtSlideNumber.Tag.ToString())) == null && api.keyword_exists(dictionaryName, Int32.Parse(txtSlideNumber.Tag.ToString())))
-            {
-
-                cmdAddSlide.Text = "Rename Slide";
-            }
-            else
-            {
-                cmdAddSlide.Text = "Add Slide";
-            }
             if (txtDictionary.Text != null)
             {
                 txtPhrase.Text = api.getKeyword(txtDictionary.Text, Int32.Parse(txtSlideNumber.Tag.ToString()));

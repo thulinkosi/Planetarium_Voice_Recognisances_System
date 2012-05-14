@@ -41,9 +41,9 @@
             this.cmdStart = this.Factory.CreateRibbonButton();
             this.Dictionaries = this.Factory.CreateRibbonGroup();
             this.cmdAddDictionary = this.Factory.CreateRibbonButton();
-            this.group2 = this.Factory.CreateRibbonGroup();
             this.cmdUpdateDictionary = this.Factory.CreateRibbonButton();
             this.cmdDeleteDictionary = this.Factory.CreateRibbonButton();
+            this.group2 = this.Factory.CreateRibbonGroup();
             this.cmdAboutUs = this.Factory.CreateRibbonButton();
             this.cmdHelp = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
@@ -104,13 +104,6 @@
             this.cmdAddDictionary.ShowImage = true;
             this.cmdAddDictionary.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.cmdAddDictionary_Click);
             // 
-            // group2
-            // 
-            this.group2.Items.Add(this.cmdAboutUs);
-            this.group2.Items.Add(this.cmdHelp);
-            this.group2.Label = "Other";
-            this.group2.Name = "group2";
-            // 
             // cmdUpdateDictionary
             // 
             this.cmdUpdateDictionary.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -128,6 +121,13 @@
             this.cmdDeleteDictionary.Name = "cmdDeleteDictionary";
             this.cmdDeleteDictionary.ShowImage = true;
             this.cmdDeleteDictionary.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.cmdDeleteDictionary_Click);
+            // 
+            // group2
+            // 
+            this.group2.Items.Add(this.cmdAboutUs);
+            this.group2.Items.Add(this.cmdHelp);
+            this.group2.Label = "Other";
+            this.group2.Name = "group2";
             // 
             // cmdAboutUs
             // 

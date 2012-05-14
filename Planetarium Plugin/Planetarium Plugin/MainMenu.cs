@@ -11,6 +11,7 @@ namespace Planetarium_Plugin
 {
     public partial class MainMenu
     {
+        string currentlyViewed = "";
         PlanetariumDB_API api = new PlanetariumDB_API();
         Tools.CustomTaskPane presentation;
         Tools.CustomTaskPane addDictionary;
@@ -32,7 +33,9 @@ namespace Planetarium_Plugin
             //Slide change event handler
             try
             {
+                
                 Globals.ThisAddIn.Application.SlideSelectionChanged += Application_SlideSelectionChanged;
+               
             }
             catch (AccessViolationException ex)
             {
@@ -42,15 +45,25 @@ namespace Planetarium_Plugin
            
         }
 
+      
+
         //slide change function
         void Application_SlideSelectionChanged(PowerPoint.SlideRange SldRange) 
         {
             try
            {
+                
                 if (SldRange != null )
                 {
+                    if(currentlyViewed=="add"){
+
                     addDictionaries.showSlideNumber(SldRange.SlideID.ToString(), SldRange.SlideNumber.ToString());
-                    updateDictionaries.showSlideNumber(SldRange.SlideID.ToString(), SldRange.SlideNumber.ToString());
+                    }
+                        else if (currentlyViewed=="update")
+                        {
+                             updateDictionaries.showSlideNumber(SldRange.SlideID.ToString(), SldRange.SlideNumber.ToString());
+                        }
+                   
                 }
            }
             catch (AccessViolationException avEx)
@@ -69,6 +82,7 @@ namespace Planetarium_Plugin
             removeDictionary.Visible = false;
             updateDictionary.Visible = false;
             presentation.Visible = true;
+            currentlyViewed = "start";
         }
 
         private void cmdAddDictionary_Click(object sender, RibbonControlEventArgs e)
@@ -77,6 +91,7 @@ namespace Planetarium_Plugin
             updateDictionary.Visible = false;
             presentation.Visible = false;
             addDictionary.Visible = true;
+            currentlyViewed = "add";
         }
 
         private void cmdUpdateDictionary_Click(object sender, RibbonControlEventArgs e)
@@ -85,6 +100,7 @@ namespace Planetarium_Plugin
             presentation.Visible = false;
             addDictionary.Visible = false;
             updateDictionary.Visible = true;
+            currentlyViewed = "update";
         }
 
         private void cmdDeleteDictionary_Click(object sender, RibbonControlEventArgs e)
@@ -93,6 +109,7 @@ namespace Planetarium_Plugin
             addDictionary.Visible = false;
             updateDictionary.Visible = false;
             removeDictionary.Visible = true;
+            currentlyViewed = "delete";
         }
 
         private void cmdHelp_Click(object sender, RibbonControlEventArgs e)

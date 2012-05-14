@@ -29,6 +29,11 @@
         {
             txtSlideNumber.Tag = id;
             txtSlideNumber.Text = num;
+            txtKeyword.Clear();
+            txtKeyword.Text = api.getKeyword(cmbDictionary.SelectedItem.ToString(),  System.Int32.Parse(txtSlideNumber.Tag.ToString()));
+            keyword = txtKeyword.Text;
+
+ 
         }
 
         #region Component Designer generated code
@@ -41,13 +46,13 @@
         {
             this.cmdUpdateDictionary = new System.Windows.Forms.Button();
             this.txtKeyword = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlRenameSlide = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.txtSlideNumber = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cmdFinish = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.pnlRenameDictionary = new System.Windows.Forms.Panel();
             this.cmdRenameSave = new System.Windows.Forms.Button();
             this.txtOldName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -55,15 +60,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlDictionary = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbDictionary = new System.Windows.Forms.ComboBox();
-            this.panel1.SuspendLayout();
+            this.pnlRenameSlide.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.pnlRenameDictionary.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnlDictionary.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmdUpdateDictionary
@@ -83,18 +88,18 @@
             this.txtKeyword.Size = new System.Drawing.Size(91, 20);
             this.txtKeyword.TabIndex = 3;
             // 
-            // panel1
+            // pnlRenameSlide
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.cmdUpdateDictionary);
-            this.panel1.Controls.Add(this.txtKeyword);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.txtSlideNumber);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Location = new System.Drawing.Point(16, 19);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(188, 129);
-            this.panel1.TabIndex = 6;
+            this.pnlRenameSlide.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlRenameSlide.Controls.Add(this.cmdUpdateDictionary);
+            this.pnlRenameSlide.Controls.Add(this.txtKeyword);
+            this.pnlRenameSlide.Controls.Add(this.label6);
+            this.pnlRenameSlide.Controls.Add(this.txtSlideNumber);
+            this.pnlRenameSlide.Controls.Add(this.label5);
+            this.pnlRenameSlide.Location = new System.Drawing.Point(16, 19);
+            this.pnlRenameSlide.Name = "pnlRenameSlide";
+            this.pnlRenameSlide.Size = new System.Drawing.Size(188, 129);
+            this.pnlRenameSlide.TabIndex = 6;
             // 
             // label6
             // 
@@ -112,7 +117,6 @@
             this.txtSlideNumber.Name = "txtSlideNumber";
             this.txtSlideNumber.Size = new System.Drawing.Size(81, 20);
             this.txtSlideNumber.TabIndex = 1;
-            this.txtSlideNumber.TextChanged += new System.EventHandler(this.txtSlideNumber_TextChanged_1);
             // 
             // label5
             // 
@@ -135,7 +139,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.panel3);
+            this.groupBox1.Controls.Add(this.pnlRenameDictionary);
             this.groupBox1.Location = new System.Drawing.Point(6, 321);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(226, 157);
@@ -143,18 +147,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rename a dictionary";
             // 
-            // panel3
+            // pnlRenameDictionary
             // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.cmdRenameSave);
-            this.panel3.Controls.Add(this.txtOldName);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.txtRename);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Location = new System.Drawing.Point(10, 19);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(201, 123);
-            this.panel3.TabIndex = 10;
+            this.pnlRenameDictionary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlRenameDictionary.Controls.Add(this.cmdRenameSave);
+            this.pnlRenameDictionary.Controls.Add(this.txtOldName);
+            this.pnlRenameDictionary.Controls.Add(this.label2);
+            this.pnlRenameDictionary.Controls.Add(this.txtRename);
+            this.pnlRenameDictionary.Controls.Add(this.label1);
+            this.pnlRenameDictionary.Location = new System.Drawing.Point(10, 19);
+            this.pnlRenameDictionary.Name = "pnlRenameDictionary";
+            this.pnlRenameDictionary.Size = new System.Drawing.Size(201, 123);
+            this.pnlRenameDictionary.TabIndex = 10;
             // 
             // cmdRenameSave
             // 
@@ -162,7 +166,7 @@
             this.cmdRenameSave.Name = "cmdRenameSave";
             this.cmdRenameSave.Size = new System.Drawing.Size(89, 21);
             this.cmdRenameSave.TabIndex = 4;
-            this.cmdRenameSave.Text = "Save";
+            this.cmdRenameSave.Text = "Rename";
             this.cmdRenameSave.UseVisualStyleBackColor = true;
             this.cmdRenameSave.Click += new System.EventHandler(this.cmdRenameSave_Click);
             // 
@@ -201,7 +205,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.panel1);
+            this.groupBox2.Controls.Add(this.pnlRenameSlide);
             this.groupBox2.Location = new System.Drawing.Point(13, 138);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(216, 163);
@@ -211,7 +215,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.panel2);
+            this.groupBox3.Controls.Add(this.pnlDictionary);
             this.groupBox3.Location = new System.Drawing.Point(16, 24);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(201, 92);
@@ -219,15 +223,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dictionaries";
             // 
-            // panel2
+            // pnlDictionary
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.cmbDictionary);
-            this.panel2.Location = new System.Drawing.Point(13, 18);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(182, 68);
-            this.panel2.TabIndex = 8;
+            this.pnlDictionary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlDictionary.Controls.Add(this.label4);
+            this.pnlDictionary.Controls.Add(this.cmbDictionary);
+            this.pnlDictionary.Location = new System.Drawing.Point(13, 18);
+            this.pnlDictionary.Name = "pnlDictionary";
+            this.pnlDictionary.Size = new System.Drawing.Size(182, 68);
+            this.pnlDictionary.TabIndex = 8;
             // 
             // label4
             // 
@@ -258,15 +262,15 @@
             this.Name = "UpdateDictionary";
             this.Size = new System.Drawing.Size(232, 538);
             this.Load += new System.EventHandler(this.UpdateDictionary_Load_1);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlRenameSlide.ResumeLayout(false);
+            this.pnlRenameSlide.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.pnlRenameDictionary.ResumeLayout(false);
+            this.pnlRenameDictionary.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pnlDictionary.ResumeLayout(false);
+            this.pnlDictionary.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -275,13 +279,13 @@
 
         private System.Windows.Forms.Button cmdUpdateDictionary;
         private System.Windows.Forms.TextBox txtKeyword;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlRenameSlide;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtSlideNumber;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button cmdFinish;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnlRenameDictionary;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtRename;
         private System.Windows.Forms.Label label1;
@@ -289,7 +293,7 @@
         private System.Windows.Forms.TextBox txtOldName;
         private System.Windows.Forms.Button cmdRenameSave;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlDictionary;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbDictionary;
     }

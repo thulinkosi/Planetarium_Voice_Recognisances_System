@@ -153,7 +153,7 @@
             // 
             // cmdFinish
             // 
-            this.cmdFinish.Location = new System.Drawing.Point(41, 226);
+            this.cmdFinish.Location = new System.Drawing.Point(41, 237);
             this.cmdFinish.Name = "cmdFinish";
             this.cmdFinish.Size = new System.Drawing.Size(114, 23);
             this.cmdFinish.TabIndex = 9;
