@@ -53,11 +53,16 @@ namespace Planetarium_Plugin
             try
            {
                 
-                if (SldRange != null )
+                if (SldRange.Equals(null))
                 {
                     if(currentlyViewed=="add"){
+                        try
+                        {
+                            addDictionaries.showSlideNumber(SldRange.SlideID.ToString(), SldRange.SlideNumber.ToString());
 
-                    addDictionaries.showSlideNumber(SldRange.SlideID.ToString(), SldRange.SlideNumber.ToString());
+                        }
+                        catch (System.AccessViolationException ex) { }
+
                     }
                         else if (currentlyViewed=="update")
                         {

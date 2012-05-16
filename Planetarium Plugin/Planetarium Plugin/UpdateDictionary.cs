@@ -95,27 +95,34 @@ namespace Planetarium_Plugin
 
         private void cmdUpdateDictionary_Click(object sender, EventArgs e)
         {
-            if (api.keyword_exists(dictionaryName, txtSlideNumber.Tag.ToString()))
+            if (txtKeyword.Text != "")
             {
-                api.updateKeywordPhrase(keyword, txtKeyword.Text, cmbDictionary.SelectedItem.ToString());
-                txtKeyword.Text = api.getKeyword(cmbDictionary.SelectedItem.ToString(), Int32.Parse(txtSlideNumber.Tag.ToString()));
-                MessageBox.Show("Keyword Updated");
-            }
-            else 
-            {
-                if (!api.keyword_exists(dictionaryName, txtKeyword.Text) && !api.keyword_exists(dictionaryName, Int32.Parse(txtSlideNumber.Tag.ToString())))
+                if (api.keyword_exists(dictionaryName, Int32.Parse(txtSlideNumber.Tag.ToString())))
                 {
-                    api.addKeyword(cmbDictionary.SelectedItem.ToString(), txtKeyword.Text, Int32.Parse(txtSlideNumber.Tag.ToString()));
+                    api.updateKeywordPhrase(keyword, txtKeyword.Text, cmbDictionary.SelectedItem.ToString());
                     txtKeyword.Text = api.getKeyword(cmbDictionary.SelectedItem.ToString(), Int32.Parse(txtSlideNumber.Tag.ToString()));
-                    MessageBox.Show("Keyword Added");
+                    MessageBox.Show("Keyword Updated");
                 }
                 else
                 {
-                    MessageBox.Show("Cannot Update Keyword - Add keyword in Add Panel");
+                    if (!api.keyword_exists(dictionaryName, txtKeyword.Text) && !api.keyword_exists(dictionaryName, Int32.Parse(txtSlideNumber.Tag.ToString())))
+                    {
+                        api.addKeyword(cmbDictionary.SelectedItem.ToString(), txtKeyword.Text, Int32.Parse(txtSlideNumber.Tag.ToString()));
+                        txtKeyword.Text = api.getKeyword(cmbDictionary.SelectedItem.ToString(), Int32.Parse(txtSlideNumber.Tag.ToString()));
+                        MessageBox.Show("Keyword Added");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot Update Keyword - Add keyword in Add Panel");
+                    }
+
+
+
                 }
-
-
-
+            }
+            else 
+            {
+                MessageBox.Show("Keyword Cannot Be Blank");
             }
 
             
@@ -161,22 +168,31 @@ namespace Planetarium_Plugin
 
         private void cmdRenameSave_Click(object sender, EventArgs e)
         {
-            if (api.dictionary_exists(dictionaryName))
+            if (txtRename.Text != "")
             {
-                string rename = txtRename.Text;
-                dictionaryName = txtOldName.Text;
-                api.updateDictionary(dictionaryName, rename);
-                MessageBox.Show("Dictionary Name Updated");
-                reload();
-                cmbDictionary.SelectedText = rename;
-                txtOldName.Text = rename;
-                txtRename.Clear();
+                if (api.dictionary_exists(dictionaryName))
+                {
+                    string rename = txtRename.Text;
+
+                    api.updateDictionary(dictionaryName, rename);
+                    MessageBox.Show("Dictionary Name Updated");
+                    reload();
+                    cmbDictionary.SelectedText = rename;
+                    txtOldName.Text = rename;
+                    dictionaryName = rename;
+                    txtRename.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Dictionary does not exist");
+                }
             }
-            else
+            else 
             {
-                MessageBox.Show("Dictionary does not exist");
+                MessageBox.Show("Field cannot be Blank");
             }
         }
+
 
     }
 }
